@@ -5,236 +5,308 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RISNAWATI.id | Toko Flatshoes Modern</title>
     <style>
-        /* Reset & General Style */
+        /* --- Reset & Base Style --- */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f8faf8;
             color: #333;
+            line-height: 1.6;
         }
 
-        /* Header & Logo */
+        /* --- Header & Logo --- */
         header {
-            background-color: #e7c4e4;
+            background-color: #ffffff;
             text-align: center;
-            padding: 30px 10px;
+            padding: 60px 20px;
+            border-bottom: 4px solid #77966d;
         }
         .logo {
-            width: 120px; /* Ukuran sedikit diperbesar agar tulisan di logo terbaca */
+            width: 150px;
             height: auto;
-            margin-bottom: 10px;
-            /* border-radius: 50%; <-- Dihapus agar logo kotak tidak terpotong */
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         .judul {
-            font-size: 40px;
-            font-weight: bold;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
             margin: 0;
-            color: #4a4a4a;
+            color: #5a7a4e;
+            letter-spacing: 3px;
         }
         .slogan {
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            color: #666;
+            font-size: 14px;
+            letter-spacing: 5px;
+            margin-top: 10px;
+            color: #999;
+            text-transform: uppercase;
         }
 
-        /* Navigation */
+        /* --- Navigation --- */
         nav {
-            background-color: #cfaadd;
-            padding: 15px;
+            background-color: #77966d;
+            padding: 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
         }
         nav a {
             color: white;
-            margin: 0 15px;
+            padding: 18px 25px;
             text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 15px;
         }
         nav a:hover {
-            color: #6d2bd9;
+            background-color: #5a7a4e;
+            color: #fff;
         }
 
-        /* Banner */
+        /* --- Banner --- */
         .banner {
             width: 100%;
-            height: 400px;
+            height: 450px;
             overflow: hidden;
+            position: relative;
         }
         .banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.9);
         }
 
-        /* Main Content */
+        /* --- Main Container --- */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
-            padding: 20px;
-        }
-        .welcome-section {
-            text-align: center;
-            padding: 40px 0;
+            padding: 40px 20px;
         }
 
-        /* Product Grid */
-        h2.section-title {
+        /* --- Product Grid --- */
+        .section-title {
             text-align: center;
-            margin: 40px 0 20px;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #4a6340;
             position: relative;
         }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: #77966d;
+            display: block;
+            margin: 10px auto;
+        }
         .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
         .produk-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 250px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 20px;
             text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+            border: 1px solid #eee;
         }
         .produk-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         .produk-card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .produk-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
         }
         .price {
-            color: #e91e63;
-            font-weight: bold;
-            font-size: 18px;
+            color: #77966d;
+            font-weight: 700;
+            font-size: 22px;
+            margin: 10px 0 20px;
         }
 
-        /* Button Custom */
-        .button {
-            background-color: #c084fc;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
+        /* --- Visi & Misi --- */
+        .about-box {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            margin: 60px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-        .button:hover {
-            background-color: #6d2bd9;
-        }
-
-        /* Contact Form */
-        .contact-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
+        .visi-misi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .visi-misi-item {
+            background: #fdfdfd;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid #77966d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* --- Contact Section --- */
+        .info-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        .contact-container {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: inherit;
+            background: #fcfcfc;
+            transition: 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #77966d;
+            background: #fff;
         }
 
-        /* Footer */
+        /* --- Buttons --- */
+        .button {
+            background-color: #77966d;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(119, 150, 109, 0.3);
+        }
+        .button:hover {
+            background-color: #5a7a4e;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(119, 150, 109, 0.4);
+        }
+
+        /* --- Footer --- */
         footer {
-            background-color: #e7c4e4;
+            background-color: #2c332a;
+            color: #b5c4b1;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+            .banner { height: 300px; }
+            nav ul { flex-direction: column; }
+            nav a { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .info-wrapper img { display: none; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="Hijau Putih Modern Toko Serba Ada Logo_20260426_230209_0000.png" alt="Logo Risnawati" class="logo">
+        <img src="logo-risnawati.png" alt="Logo RISNAWATI" class="logo">
         <h1 class="judul">RISNAWATI</h1>
-        <p class="slogan">TUNJUKKAN GAYAMU DISINI!</p>
+        <p class="slogan">Tunjukkan Gayamu Di Sini!</p>
     </header>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#produk">Produk</a>
-        <a href="#tentang">Tentang Kami</a>
-        <a href="#kontak">Kontak</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
     </nav>
 
     <section class="banner" id="home">
-        <img src="banner.jpeg" alt="Fashion Banner">
+        <img src="banner.jpeg" alt="Koleksi Terbaru RISNAWATI">
     </section>
 
     <div class="container">
         
-        <section class="welcome-section">
-            <h3>SELAMAT DATANG DI RISNAWATI</h3>
-            <p>Koleksi Flatshoes elegan untuk kenyamanan melangkah setiap hari.</p>
-            <a href="#produk" class="button">Belanja Sekarang</a>
-        </section>
-
-        <hr>
-
-        <h2 class="section-title" id="produk">BEST SELLER</h2>
+        <h2 class="section-title" id="produk">Koleksi Terpopuler</h2>
         <div class="product-grid">
             <div class="produk-card">
                 <img src="gambar1.jpeg" alt="Flatshoes Pita">
                 <h3>Flatshoes Pita</h3>
-                <p class="price">Rp115.000</p>
-                <button class="button">Beli Sekarang</button>
+                <p class="price">Rp58.000</p>
+                <a href="#" class="button">Beli Sekarang</a>
             </div>
-
             <div class="produk-card">
-                <img src="gambar2.jpeg" alt="Flatshoes Putih">
+                <img src="gambar2.jpg" alt="Flatshoes Putih">
                 <h3>Flatshoes Putih</h3>
                 <p class="price">Rp97.000</p>
-                <button class="button">Beli Sekarang</button>
+                <a href="#" class="button">Beli Sekarang</a>
             </div>
-
             <div class="produk-card">
-                <img src="gambar3.jpeg" alt="Flatshoes Hitam">
+                <img src="gambar3.jpg" alt="Flatshoes Hitam">
                 <h3>Flatshoes Hitam</h3>
-                <p class="price">Rp140.000</p>
-                <button class="button">Beli Sekarang</button>
+                <p class="price">Rp100.000</p>
+                <a href="#" class="button">Beli Sekarang</a>
             </div>
         </div>
 
-        <div class="contact-container">
-            <h2 id="tentang">Tentang Kami</h2>
-            <p>RISNAWATI adalah destinasi fashion modern yang fokus pada kualitas dan gaya. Kami percaya bahwa sepatu yang cantik tidak harus menyakitkan kaki.</p>
+        <div class="about-box" id="tentang">
+            <h2 style="text-align: center; color: #4a6340; margin-bottom: 10px;">Tentang Kami</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #666;">
+                RISNAWATI.id hadir untuk memenuhi kebutuhan fashion alas kaki wanita yang mengedepankan kualitas, kenyamanan, dan harga yang terjangkau.
+            </p>
             
-            <h2 id="kontak">Kontak Kami</h2>
-            <p>📍 Alamat: Jl. Tangkuban Perahu No. 23</p>
-            <p>📞 WhatsApp: +62 82128359084</p>
-
-            <form class="contact-form">
-                <input type="text" placeholder="Nama Lengkap" required>
-                <input type="email" placeholder="Email Aktif" required>
-                <textarea placeholder="Tulis pertanyaan Anda di sini..." rows="4"></textarea>
-                <button type="submit" class="button">Kirim Pesan</button>
-            </form>
+            <div class="visi-misi-container">
+                <div class="visi-misi-item">
+                    <h3>🌟 Visi Kami</h3>
+                    <p>Menjadi merk flatshoes lokal terdepan yang dikenal karena kualitas kenyamanannya dan selalu menjadi inspirasi gaya bagi wanita di seluruh Indonesia.</p>
+                </div>
+                <div class="visi-misi-item">
+                    <h3>🚀 Misi Kami</h3>
+                    <ul style="padding-left: 20px; color: #555;">
+                        <li>Menghadirkan produk berkualitas premium dengan harga ekonomis.</li>
+                        <li>Menggunakan bahan yang ramah di kaki untuk penggunaan sehari-hari.</li>
+                        <li>Memberikan pengalaman belanja yang mudah dan pelayanan ramah.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-    </div>
-
-    <footer>
-        <p>&copy; 2026 RISNAWATI.id - All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+        <div class="info-wrapper" id="kontak">
